@@ -4,10 +4,6 @@ class Prime
     Prime.gather(limit) if limit > 0
   end
 
-  # A simple but slow method of verifying the primality of a given number n is known as trial division. 
-  # It consists of testing whether n is a multiple of any integer between 2 and \sqrt{n}. 
-  # Algorithms much more efficient than trial division have been devised to test the primality of large numbers.
-  # Particularly fast methods are available for numbers of special forms, such as Mersenne numbers.
   def self.prime? number
     number = Integer(number)
     return false if number < 2
