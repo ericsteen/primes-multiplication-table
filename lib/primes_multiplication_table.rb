@@ -8,7 +8,6 @@ class PrimesMultiplicationTable
 
   def initialize size=DEFAULT_TABLE_SIZE
     @size = size || DEFAULT_TABLE_SIZE
-    p table_data
     @data = table_data
   end
 
@@ -23,9 +22,16 @@ class PrimesMultiplicationTable
   end
 
   def table_data
+    cache = {}
     table_header.map do |x|
       table_header.map do |y|
-        x*y
+        if result = cache["#{x},#{y}"] or result = cache["#{y},#{x}"]
+          result
+        else
+          result = x*y
+          cache["#{x},#{y}"] = result
+          cache["#{y},#{x}"] = result
+        end
       end
     end
   end

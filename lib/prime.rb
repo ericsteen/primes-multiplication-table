@@ -13,7 +13,7 @@ class Prime
     return false if number < 2
 
     trial_divisions = (2..Math.sqrt(number).to_i)
-    trial_divisions.select { |d| number % d == 0 }.empty?
+    trial_divisions.none? { |d| number % d == 0 }
   end
 
   private
@@ -21,7 +21,7 @@ class Prime
   def self.gather limit
     return 2 if limit == 1
 
-    range = 2...limit**2
-    range.select { |i| prime? i }.first(limit)
+    range = 2...Float::INFINITY
+    range.lazy.select { |i| prime? i }.first(limit)
   end
 end
