@@ -22,16 +22,9 @@ class PrimesMultiplicationTable
   end
 
   def table_data
-    cache = {}
     table_header.map do |x|
       table_header.map do |y|
-        if result = cache["#{x},#{y}"] or result = cache["#{y},#{x}"]
-          result
-        else
-          result = x*y
-          cache["#{x},#{y}"] = result
-          cache["#{y},#{x}"] = result
-        end
+        x*y
       end
     end
   end
